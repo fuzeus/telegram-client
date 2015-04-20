@@ -5,5 +5,19 @@ var Router = Ember.Router.extend({
   location: config.locationType
 });
 
+Router.map(function() {
+  this.resource('auth', { path: '/'}, function() {
+    this.route('signup', {path: '/'});
+    this.route('login');
+    this.route('reset');
+    this.route('check');
+  });
+  this.route('dashboard');
+  this.resource('user', { path: '/:user_id'}, function() {
+    this.route('posts');
+    this.route('following');
+    this.route('followers');
+  });
+});
 export default Router.map(function() {
 });
