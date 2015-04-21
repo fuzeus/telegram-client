@@ -16,7 +16,6 @@
   margin: 100px 100px;
   height: 57%;
   min-width: 920px;
-
 }
 .left{
   position: relative;
@@ -86,13 +85,14 @@
 }
 .rest{
   display: inline-block;
-  padding-left: 105px;
+  padding-left: 0px;
 }
 .reset{
   padding-left: 150;
 }
 .log{
   margin-bottom: 50px;
+  margin-top: 30px;
 }
 input[type="button"] {
   background-color: white;

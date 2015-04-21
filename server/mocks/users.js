@@ -28,6 +28,8 @@ module.exports = function(app) {
   });
 
   usersRouter.post('/', function(req, res) {
+    req.body.user.id;
+    req.body.user.meta.password;
     res.status(201).end();
   });
 
