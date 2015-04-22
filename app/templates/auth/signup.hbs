@@ -10,6 +10,11 @@
           placeholder="Enter your name..."
           value=name}}
   {{input type="text"
+          name="email"
+          id="username"
+          placeholder="Enter your email..."
+          value=email}}
+  {{input type="text"
           name="username"
           id="username"
           placeholder="Enter your username..."
@@ -20,6 +25,10 @@
           name="password"
           id="password"
           value=password}}
+
+  {{#if error}}
+    <div class="red-color"> {{error}} </div> 
+  {{/if}}
 
   <div class="signup">
     <div class="log">

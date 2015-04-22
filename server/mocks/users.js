@@ -2,55 +2,53 @@ module.exports = function(app) {
   var express = require('express');
   var usersRouter = express.Router();
 
+  var users = {
+    'joeschmidt': {
+      id: 'joeschmidt',
+      name: 'Joe Schmidt',
+      email: 'joeschmidt@schmidt.com'
+    },
+    'carollovell': {
+      id: 'carollovell',
+      name: 'Carol Lovell',
+      email: 'carol@lovelegos.com'
+    },
+    'krysrutledge': {
+      id: 'krysrutledge',
+      name: 'Krys Rutledge',
+      email: 'krys@hulkitup.com'
+    }
+  };
+
+  var allUsersArray = Object.keys(users).map(function(key) { return users[key]; });
+
   usersRouter.get('/:id', function(req, res) {
-    var users = {
-      'joeschmidt': {
-        id: 'joeschmidt',
-        name: 'Joe Schmidt',
-        email: 'joeschmidt@schmidt.com'
-      },
-      'carollovell': {
-        id: 'carollovell',
-        name: 'Carol Lovell',
-        email: 'carol@lovelegos.com'
-      },
-      'krysrutledge': {
-        id: 'krysrutledge',
-        name: 'Krys Rutledge',
-        email: 'krys@hulkitup.com'
-      }
-    };
-
-
     res.send({
-      'users': [ users[req.params.id]]
+      user: users[req.params.id]
     });
   });
 
   usersRouter.post('/', function(req, res) {
-    req.body.user.id;
-    req.body.user.meta.password;
-    res.status(201).end();
-  });
-
-  usersRouter.get('/:id', function(req, res) {
-    res.send({
-      'users': {
-        id: req.params.id
+    if (req.body.user.meta.operation === 'signup') {
+      var user = {
+        id: req.body.user.id,
+        name: req.body.user.name,
+        email: req.body.user.email
+      };
+      res.send({
+        user: user
+      });
+    } else if (req.body.user.meta.operation === 'login') {
+      if (users[req.body.user.id]) {
+        res.send({
+          user: users[req.body.user.id]
+        });
+      } else {
+        res.status(404).send('Invalid username/password!');
       }
-    });
-  });
-
-  usersRouter.put('/:id', function(req, res) {
-    res.send({
-      'users': {
-        id: req.params.id
-      }
-    });
-  });
-
-  usersRouter.delete('/:id', function(req, res) {
-    res.status(204).end();
+    } else {
+      res.status(404).send('Invalid operation!');
+    }
   });
 
   app.use('/api/users', usersRouter);
