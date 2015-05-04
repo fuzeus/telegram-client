@@ -1,4 +1,4 @@
-{{nav-bar authenticatedUser=authenticatedUser loggingOut="logOut"}}
+{{nav-bar authenticatedUser=session.authenticatedUser loggingOut="logOut"}}
 <!--
 <div class="dashboard">
   <div class="create-post">
@@ -7,11 +7,13 @@
       <div class="characters-left">
         {{#if overLimit}}
           <span class="red">{{charLeft}} characters</span>
+          <button class="publish dark-gray-btn">Publish</button>
         {{else}}
           {{charLeft}} characters
+          <button class="publish dark-gray-btn" {{action "createPost"}}>Publish</button>
         {{/if}}
       </div>
-      <button class="publish dark-gray-btn" {{action "createPost"}}>Publish</button>
+
     </div>
   </div>
 
@@ -19,7 +21,7 @@
 
   <div class="posts-list">
     {{#each post in controller}}
-        {{post-block post=post authenticatedUser=authenticatedUser delete="deletePost" createRepost="repost"}}
+        {{post-block post=post authenticatedUser=session.authenticatedUser delete="deletePost" createRepost="repost"}}
     {{/each}}
   </div>
 </div>

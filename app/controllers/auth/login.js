@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: "application",
-  applicationController: Ember.computed.alias('controllers.application'),
+  session: Ember.inject.service('session'),
   username: '',
   password: '',
   error: null,
@@ -22,7 +21,7 @@ export default Ember.Controller.extend({
         operation: 'login'
       });
       user.save().then(function(user) {
-        controller.get('applicationController').set('authenticatedUser', user);
+        controller.get('session').set('authenticatedUser', user);
         controller.transitionToRoute('dashboard');
       }, function (response) {
         console.log(response.responseText);

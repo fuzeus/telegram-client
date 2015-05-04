@@ -1,9 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-  needs: "application",
-  applicationController: Ember.computed.alias('controllers.application'),
-  authenticatedUser: Ember.computed.alias('controllers.application.authenticatedUser'),
+  session: Ember.inject.service('session'),
   newPostText: '',
   maxLength: 140,
 
@@ -18,7 +16,7 @@ export default Ember.ArrayController.extend({
   actions: {
     createPost: function() {
       var newPostText = this.get('newPostText');
-      var authenticatedUser = this.get('authenticatedUser');
+      var authenticatedUser = this.get('session.authenthicatedUser');
       var post = this.store.createRecord('post', {
         body: newPostText,
         author: authenticatedUser,
@@ -47,7 +45,7 @@ export default Ember.ArrayController.extend({
       var controller = this;
       //can I directly change the authenticatedUser field to null like I've done below?
       //or do I have to make a reference to the applicationController and set the field from there?
-      controller.get('applicationController').set('authenticatedUser', null);
+      controller.get('session').set('authenticatedUser', null);
       //what about informing the server?
       //authenticatedUser.save().then(function() {
 
