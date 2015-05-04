@@ -1,0 +1,58 @@
+{{#unless showRepostBox}}
+  {{#if post.repost}}
+  <div class="post-block clearfix">
+    <div class="repost-header clearfix">
+      <img class="icon" src="assets/images/icon-retweet.png"/>
+      {{!not sure about my link-to helper below, specifally the dynamic user segment }}
+      <div class="author">Reposted by {{#link-to 'user' user class="dark-gray-link"}}{{post.author.name}}{{/link-to}}</div>
+    </div>
+
+    <a class="avatar link"><img src="{{post.repost.author.photo}}"/></a>
+    <div class="content">
+      <div class="author">{{#link-to 'user' user class="link"}}{{post.repost.author.name}}{{/link-to}}</div>
+        <div class="text">{{post.body}}</div>
+        <div class="footer">
+          <span>{{format-date}}</span>
+          <span class="middot">&middot;</span>
+          <span>Reposted</span>
+          <span class="middot">&middot;</span>
+          {{#if ownPost}}
+          <button class="blue-link" {{action "sendDelete"}}>Delete</button>
+          {{/if}}
+        </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="post-block clearfix">
+    {{#link-to 'user' user class="avatar link"}}
+      <img class="avatar link" src="{{post.author.photo}}"/>
+      {{/link-to}}
+    <div class="content">
+      <div class="author">{{#link-to 'user' user class="link"}}{{post.author.name}}{{/link-to}}</div>
+      <div class="text"><label>{{post.body}}</label></div>
+      <div class="footer">
+        <span class="timestamp">{{format-date}}</span>
+        <span class="middot">&middot;</span>
+      {{#if ownPost}}
+        <button class="blue-link" {{action "sendDelete"}}>Delete</button>
+      {{else}}
+        <button class="blue-link" {{action "showConfirmation"}}>Repost</button>
+      {{/if}}
+    </div>
+  </div>
+</div>
+  {{/if}}
+{{else}}
+<div class="post-block clearfix confirm-repost">
+  <img class="avatar" src="assets/images/icon-retweet.png"/>
+
+  <div class="content">
+    <div class="question">Repost this to your followers?</div>
+    <div class="footer">
+      <button class="blue-link" {{action "sendRepost"}}>Yes</button>
+      <span class="middot">&middot;</span>
+      <button class="blue-link" {{action "cancel"}}>No</button>
+    </div>
+  </div>
+</div>
+{{/unless}}

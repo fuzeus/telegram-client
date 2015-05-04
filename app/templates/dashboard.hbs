@@ -1,3 +1,26 @@
-{{#each post in controller}}
-  {{post.author.name}}: {{post.body}} <br/>
-{{/each}}
+{{nav-bar authenticatedUser=authenticatedUser loggingOut="logOut"}}
+<!--
+<div class="dashboard">
+  <div class="create-post">
+    {{textarea placeholder="What's happening?" value=newPostText autofocus="autofocus"}}
+    <div class="footer clearfix">
+      <div class="characters-left">
+        {{#if overLimit}}
+          <span class="red">{{charLeft}} characters</span>
+        {{else}}
+          {{charLeft}} characters
+        {{/if}}
+      </div>
+      <button class="publish dark-gray-btn" {{action "createPost"}}>Publish</button>
+    </div>
+  </div>
+
+  <div class="title">Latest posts</div>
+
+  <div class="posts-list">
+    {{#each post in controller}}
+        {{post-block post=post authenticatedUser=authenticatedUser delete="deletePost" createRepost="repost"}}
+    {{/each}}
+  </div>
+</div>
+-->

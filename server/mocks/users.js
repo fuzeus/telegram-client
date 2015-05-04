@@ -6,17 +6,20 @@ module.exports = function(app) {
     'joeschmidt': {
       id: 'joeschmidt',
       name: 'Joe Schmidt',
-      email: 'joeschmidt@schmidt.com'
+      email: 'joeschmidt@schmidt.com',
+      photo: "assets/images/avatar-yellow.png"
     },
     'carollovell': {
       id: 'carollovell',
       name: 'Carol Lovell',
-      email: 'carol@lovelegos.com'
+      email: 'carol@lovelegos.com',
+      photo: "assets/images/avatar-red.png"
     },
     'krysrutledge': {
       id: 'krysrutledge',
       name: 'Krys Rutledge',
-      email: 'krys@hulkitup.com'
+      email: 'krys@hulkitup.com',
+      photo: "assets/images/avatar-turquoise.png"
     }
   };
 
