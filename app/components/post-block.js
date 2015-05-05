@@ -1,9 +1,9 @@
-/*import Ember from 'ember';
+import Ember from 'ember';
 
 export default Ember.Component.extend({
   showRepostBox: false,
   ownPost: function() {
-    return authenticatedUser === post.author;
+    return this.get('authenticatedUser') === this.get('post.author');
   },
 
   actions: {
@@ -21,4 +21,3 @@ export default Ember.Component.extend({
     }
   }
 });
-*/

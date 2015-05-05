@@ -16,13 +16,14 @@ export default Ember.ArrayController.extend({
   actions: {
     createPost: function() {
       var newPostText = this.get('newPostText');
-      var authenticatedUser = this.get('session.authenthicatedUser');
+      var authenticatedUser = this.get('session.authenticatedUser');
       var post = this.store.createRecord('post', {
         body: newPostText,
         author: authenticatedUser,
         createdDate: new Date()
-      });
 
+      });
+      sortAscending: true;
       this.set('newPostText', '');
       post.save();
     },
@@ -53,7 +54,7 @@ export default Ember.ArrayController.extend({
       Ember.$.post("/api/logout", function() {
         controller.store.unloadAll('post');
         controller.store.unloadAll('user');
-        controller.transitionToRoute('auth');
+        controller.transitionToRoute('auth.login');
 
       });
     }

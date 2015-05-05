@@ -1,5 +1,5 @@
 {{nav-bar authenticatedUser=session.authenticatedUser loggingOut="logOut"}}
-<!--
+
 <div class="dashboard">
   <div class="create-post">
     {{textarea placeholder="What's happening?" value=newPostText autofocus="autofocus"}}
@@ -7,13 +7,15 @@
       <div class="characters-left">
         {{#if overLimit}}
           <span class="red">{{charLeft}} characters</span>
-          <button class="publish dark-gray-btn">Publish</button>
         {{else}}
           {{charLeft}} characters
-          <button class="publish dark-gray-btn" {{action "createPost"}}>Publish</button>
         {{/if}}
       </div>
-
+        {{#if overLimit}}
+          <button class="publish dark-gray-btn">Publish</button>
+        {{else}}
+          <button class="publish dark-gray-btn" {{action "createPost"}}>Publish</button>
+        {{/if}}
     </div>
   </div>
 
@@ -25,4 +27,3 @@
     {{/each}}
   </div>
 </div>
--->

@@ -12,9 +12,9 @@
 
   <div class="third">
     <div class="user relative-center-y">
-      {{#link-to "user" session.authenticatedUser class="avatar link"}}<img src="{{authenticatedUser.photo}}"/>{{/link-to}}
-      {{#link-to "user" session.authenticatedUser class="name dark-gray-link"}}{{authenticatedUser.name}}{{/link-to}}
-      <a class="logout dark-gray-link" {{action "sendLogOut"}}>Log out</a>
+      {{#link-to "user" authenticatedUser class="avatar link"}}<img src="{{authenticatedUser.photo}}"/>{{/link-to}}
+      {{#link-to "user" authenticatedUser class="name dark-gray-link"}}{{authenticatedUser.name}}{{/link-to}}
+      <label class="logout dark-gray-link" {{action "sendLogOut"}}>Log out</label>
     </div>
   </div>
 </div>

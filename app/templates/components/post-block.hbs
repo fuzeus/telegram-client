@@ -12,12 +12,12 @@
       <div class="author">{{#link-to 'user' user class="link"}}{{post.repost.author.name}}{{/link-to}}</div>
         <div class="text">{{post.body}}</div>
         <div class="footer">
-          <span>{{format-date}}</span>
+          <span>{{ago createdDate}}</span>
           <span class="middot">&middot;</span>
           <span>Reposted</span>
           <span class="middot">&middot;</span>
           {{#if ownPost}}
-          <button class="blue-link" {{action "sendDelete"}}>Delete</button>
+          <label class="blue-link" {{action "sendDelete"}}>Delete</label>
           {{/if}}
         </div>
     </div>
@@ -31,10 +31,10 @@
       <div class="author">{{#link-to 'user' user class="link"}}{{post.author.name}}{{/link-to}}</div>
       <div class="text"><label>{{post.body}}</label></div>
       <div class="footer">
-        <span class="timestamp">{{format-date}}</span>
+        <span class="timestamp">{{ago createdDate}}</span>
         <span class="middot">&middot;</span>
       {{#if ownPost}}
-        <button class="blue-link" {{action "sendDelete"}}>Delete</button>
+        <label class="blue-link" {{action "sendDelete"}}>Delete</label>
       {{else}}
         <button class="blue-link" {{action "showConfirmation"}}>Repost</button>
       {{/if}}
