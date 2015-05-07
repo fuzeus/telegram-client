@@ -4,6 +4,8 @@ export default Ember.ArrayController.extend({
   session: Ember.inject.service('session'),
   newPostText: '',
   maxLength: 140,
+  sortProperties: ['createdDate'],
+  sortAscending: false,
 
   charLeft: function () {
     return this.get('maxLength') - this.get('newPostText.length');
@@ -23,7 +25,6 @@ export default Ember.ArrayController.extend({
         createdDate: new Date()
 
       });
-      sortAscending: true;
       this.set('newPostText', '');
       post.save();
     },
@@ -34,7 +35,7 @@ export default Ember.ArrayController.extend({
 
     repost: function(post, authenticatedUser) {
       var repost = this.store.createRecord('post', {
-        body: post.body,
+        body: post.get('body'),
         author: authenticatedUser,
         createdDated: new Date(),
         repost: post

@@ -24,7 +24,17 @@ module.exports = function(app) {
   };
 
   var allUsersArray = Object.keys(users).map(function(key) { return users[key]; });
+/*  usersRouter.get('/', function(req, res) {
+    if (req.query.isAuthenticated) {
+   // if you want to always be logged in
+   res.send({
+     users: [users['joeschmidt']]
+   });
 
+   // if you don't want to be logged in
+   res.send({users: []});
+ }
+});*/
   usersRouter.get('/:id', function(req, res) {
     res.send({
       user: users[req.params.id]

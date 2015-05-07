@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   showRepostBox: false,
   ownPost: function() {
-    return this.get('authenticatedUser') === this.get('post.author');
-  },
+    return this.get('authenticatedUser.name') === this.get('post.author.name');
+  }.property('authenticatedUser', 'post'),
 
   actions: {
     showConfirmation: function() {
@@ -15,6 +15,7 @@ export default Ember.Component.extend({
     },
     sendRepost: function() {
       this.sendAction('createRepost', this.get('post'), this.get('authenticatedUser'));
+      this.toggleProperty('showRepostBox');
     },
     cancel: function() {
       this.toggleProperty('showRepostBox');

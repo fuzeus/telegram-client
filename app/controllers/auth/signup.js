@@ -23,6 +23,10 @@ export default Ember.Controller.extend({
       });
       user.save().then(function(user) {
         controller.get('session').set('authenticatedUser', user);
+        controller.set('name', null);
+        controller.set('username', null);
+        controller.set('password', null);
+        controller.set('email', null);
         controller.transitionToRoute('dashboard');
       }, function (response) {
         console.log(response.responseText);
