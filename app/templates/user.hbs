@@ -1,8 +1,9 @@
+{{nav-bar authenticatedUser=session.authenticatedUser loggingOut="logOut"}}
 <div class="profile">
   <div class="user-header">
     <img class="avatar" src="img/avatar-turquoise.png"/>
-    <div class="name">Cristian Strat</div>
-    <div class="username">@cristianstrat</div>
+    <div class="name">{{user.name}}</div>
+    <div class="username">{{user.id}}</div>
     <button class="blue-btn follow">Follow</button>
   </div>
 
@@ -18,7 +19,7 @@
         <img src="img/avatar-red.png"/>
       </a>
       <div class="name">
-        <a class="link">John Maeda</a>
+        <a class="link">{{user.name}}</a>
       </div>
       <button class="blue-btn follow relative-center-y">
         Follow

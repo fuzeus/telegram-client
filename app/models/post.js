@@ -4,7 +4,7 @@ export default DS.Model.extend({
   body: DS.attr('string'),
   createdDate: DS.attr('date'),
   author: DS.belongsTo('user', {async: true}),
-  repost: DS.belongsTo('post', {async: true})
+  repost: DS.belongsTo('post', {async: true, inverse: null})
 }).reopenClass({
   FIXTURES: [
     {
