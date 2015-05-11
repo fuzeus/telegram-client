@@ -14,12 +14,13 @@ export default Ember.Controller.extend({
       if (Ember.isEmpty(username)){
         alert('Please enter username');
       }
-      else {}
+
       var user = this.store.createRecord('user', {
         id: username,
         password: password,
         operation: 'login'
       });
+
       user.save().then(function(user) {
         controller.get('session').set('authenticatedUser', user);
         controller.set('username', null);

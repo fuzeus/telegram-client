@@ -1,3 +1,4 @@
+{{!this code hasn't been worked by me yet}}
 <div class="user-block clearfix">
   <a class="avatar link">
     <img src="{{user.photo}}"/>
@@ -5,7 +6,13 @@
   <div class="name">
     <a class="link">{{user.name}}</a>
   </div>
+  {{#if followedBy}}
+  <button class="blue-btn follow relative-center-y">
+    Unfollow
+  </button>
+  {{else}}
   <button class="blue-btn follow relative-center-y">
     Follow
   </button>
+  {{/if}}
 </div>

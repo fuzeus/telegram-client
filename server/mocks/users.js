@@ -41,6 +41,15 @@ module.exports = function(app) {
     });
   });
 
+  usersRouter.get('/', function(req, res) {
+   if (req.query.followedBy || req.query.follows) {
+     return res.send({
+       users: allUsersArray
+     });
+   }
+   return res.status(403).send('Forbidden!');
+ });
+
   usersRouter.post('/', function(req, res) {
     if (req.body.user.meta.operation === 'signup') {
       var user = {

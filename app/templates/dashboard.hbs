@@ -23,7 +23,7 @@
 
   <div class="posts-list">
     {{#each post in controller}}
-        {{post-block post=post authenticatedUser=session.authenticatedUser user=user delete="deletePost" createRepost="repost"}}
+        {{post-block post=post authenticatedUser=session.authenticatedUser delete="deletePost" createRepost="repost"}}
     {{/each}}
   </div>
 </div>

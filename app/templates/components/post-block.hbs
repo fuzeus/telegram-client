@@ -4,12 +4,12 @@
     <div class="repost-header clearfix">
       <img class="icon" src="assets/images/icon-retweet.png"/>
       {{!not sure about my link-to helper below, specifally the dynamic user segment }}
-      <div class="author">Reposted by {{#link-to 'user' user class="dark-gray-link"}}{{post.author.name}}{{/link-to}}</div>
+      <div class="author">Reposted by {{#link-to 'user' post.author class="dark-gray-link"}}{{post.author.name}}{{/link-to}}</div>
     </div>
 
-    <a class="avatar link"><img src="{{post.repost.author.photo}}"/></a>
+    {{#link-to "user" post.repost.author class="avatar link"}}<img src="{{post.repost.author.photo}}"/>{{/link-to}}
     <div class="content">
-      <div class="author">{{#link-to 'user' user class="link"}}{{post.repost.author.name}}{{/link-to}}</div>
+      <div class="author">{{#link-to 'user' post.repost.author class="link"}}{{post.repost.author.name}}{{/link-to}}</div>
         <div class="text">{{post.body}}</div>
         <div class="footer">
           <span>{{ago createdDate}}</span>
@@ -24,11 +24,11 @@
   </div>
   {{else}}
   <div class="post-block clearfix">
-    {{#link-to 'user' user class="avatar link"}}
+    {{#link-to 'user' post.author class="avatar link"}}
       <img class="avatar link" src="{{post.author.photo}}"/>
       {{/link-to}}
     <div class="content">
-      <div class="author">{{#link-to 'user' user class="link"}}{{post.author.name}}{{/link-to}}</div>
+      <div class="author">{{#link-to 'user' post.author class="link"}}{{post.author.name}}{{/link-to}}</div>
       <div class="text"><label>{{post.body}}</label></div>
       <div class="footer">
         <span class="timestamp">{{ago createdDate}}</span>

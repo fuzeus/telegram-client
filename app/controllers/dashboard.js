@@ -37,7 +37,7 @@ export default Ember.ArrayController.extend({
       var repost = this.store.createRecord('post', {
         body: post.get('body'),
         author: authenticatedUser,
-        createdDated: new Date(),
+        createdDate: new Date(),
         repost: post
       });
       repost.save();
