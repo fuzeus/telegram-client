@@ -1,8 +1,8 @@
 
-<div>{{outlet}}</div>
+
 
 <div class="posts-list">
-  {{#each post in controller}}
+  {{#each post in model}}
     {{post-block post=post authenticatedUser=session.authenticatedUser}}
   {{/each}}
 </div>

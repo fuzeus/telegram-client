@@ -2,8 +2,20 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
-
+  notAuthenticatedUser: function () {
+    return this.get('model') !== this.get('session.authenticatedUser');
+  }.property('model', 'session.authenticatedUser'),
   actions: {
+    toggleFollowCurrentUser: function() {
+      var model = this.get('model');
+      model.toggleProperty('followedByAuthenticatedUser');
+      if (model.get('followedByAuthenticatedUser')) {
+        model.set('operation', "follow");
+      } else {
+        model.set('operation', "unfollow");
+      }
+      model.save();
+    },
     logOut: function() {
       var controller = this;
       //can I directly change the authenticatedUser field to null like I've done below?

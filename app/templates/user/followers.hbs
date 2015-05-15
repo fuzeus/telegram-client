@@ -1,4 +1,5 @@
-{{outlet}}
-{{#each user in controller}}
-  {{user-block user=user}}
-{{/each}}
+<div class="users-list">
+  {{#each user in controller}}
+    {{user-block user=user authenticatedUser=session.authenticatedUser follow="toggleFollow"}}
+  {{/each}}
+</div

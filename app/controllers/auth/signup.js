@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
   actions: {
     signup: function() {
       var name = this.get('name');
-      var username = this.get('usermame');
+      var username = this.get('username');
       var password = this.get('password');
       var email = this.get('email');
       var controller = this;

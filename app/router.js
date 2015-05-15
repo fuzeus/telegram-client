@@ -14,7 +14,7 @@ Router.map(function() {
   });
   this.route('dashboard');
   this.resource('user', { path: '/:user_id'}, function() {
-    this.route('posts');
+    this.route('posts', {path: '/'});
     this.route('following');
     this.route('followers');
   });

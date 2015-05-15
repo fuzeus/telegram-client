@@ -10,11 +10,13 @@
     <img class="relative-center-xy" src="assets/images/telegram-logo-small.png">
   </div>
 
-  <div class="third">
-    <div class="user relative-center-y">
-      {{#link-to "user" authenticatedUser class="avatar link"}}<img src="{{authenticatedUser.photo}}"/>{{/link-to}}
-      {{#link-to "user" authenticatedUser class="name dark-gray-link"}}{{authenticatedUser.name}}{{/link-to}}
-      <label class="logout dark-gray-link" {{action "sendLogOut"}}>Log out</label>
+  {{#if authenticated}}
+    <div class="third">
+      <div class="user relative-center-y">
+          {{#link-to "user" authenticatedUser class="avatar link"}}<img src="{{authenticatedUser.photo}}"/>{{/link-to}}
+          {{#link-to "user" authenticatedUser class="name dark-gray-link"}}{{authenticatedUser.name}}{{/link-to}}
+          <label class="logout dark-gray-link" {{action "sendLogOut"}}>Log out</label>
+      </div>
     </div>
-  </div>
+  {{/if}}
 </div>

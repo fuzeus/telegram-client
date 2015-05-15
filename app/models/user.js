@@ -4,7 +4,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   email: DS.attr('string'),
   photo: DS.attr('string'),
-  followedByCurrentUser: DS.attr('boolean')
+  followedByAuthenticatedUser: DS.attr('boolean')
 }).reopenClass({
   FIXTURES: [
     {
