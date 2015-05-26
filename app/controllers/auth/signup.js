@@ -15,12 +15,31 @@ export default Ember.Controller.extend({
       var password = this.get('password');
       var email = this.get('email');
       var controller = this;
+
+      if (Ember.isEmpty(name)) {
+        return this.set('error', 'Please enter name');
+      }
+
+      if (Ember.isEmpty(email)) {
+        return this.set('error', 'Please enter email');
+      }
+
+      if (Ember.isEmpty(username)) {
+        return this.set('error', 'Please enter username');
+      }
+
+      if (Ember.isEmpty(password)) {
+        return this.set('error', 'Please enter password');
+      }
+
       var user = this.store.createRecord('user', {
         id: username,
         name: name,
+        email: email,
         password: password,
         operation: 'signup'
       });
+
       user.save().then(function(user) {
         controller.get('session').set('authenticatedUser', user);
         controller.set('name', null);
@@ -29,7 +48,7 @@ export default Ember.Controller.extend({
         controller.set('email', null);
         controller.transitionToRoute('dashboard');
       }, function (response) {
-        console.log(response.responseText);
+        controller.set('error', response.responseText);
       });
     }
   }

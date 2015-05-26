@@ -11,8 +11,13 @@ export default Ember.Controller.extend({
       var username = this.get('username');
       var password = this.get('password');
       var controller = this;
-      if (Ember.isEmpty(username)){
-        alert('Please enter username');
+
+      if (Ember.isEmpty(username)) {
+        return this.set('error', 'Please enter username');
+      }
+
+      if (Ember.isEmpty(password)) {
+        return this.set('error', 'Please enter password');
       }
 
       var user = this.store.createRecord('user', {
@@ -27,7 +32,7 @@ export default Ember.Controller.extend({
         controller.set('password', null);
         controller.transitionToRoute('dashboard');
       }, function (response) {
-        console.log(response.responseText);
+        controller.set('error', response.responseText);
       });
     }
   }

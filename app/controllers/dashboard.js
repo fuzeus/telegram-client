@@ -2,8 +2,10 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
   session: Ember.inject.service('session'),
+
   newPostText: '',
   maxLength: 140,
+
   sortProperties: ['createdDate'],
   sortAscending: false,
 
@@ -23,10 +25,13 @@ export default Ember.ArrayController.extend({
         body: newPostText,
         author: authenticatedUser,
         createdDate: new Date()
-
       });
-      this.set('newPostText', '');
-      post.save();
+      var controller = this;
+      post.save().then(function(post) {
+        controller.set('newPostText', '');
+      }, function(error) {
+        // TODO: show the user some error message
+      });
     },
 
     deletePost: function(post) {
@@ -41,24 +46,6 @@ export default Ember.ArrayController.extend({
         repost: post
       });
       repost.save();
-    },
-
-    logOut: function() {
-      var controller = this;
-      //can I directly change the authenticatedUser field to null like I've done below?
-      //or do I have to make a reference to the applicationController and set the field from there?
-      controller.get('session').set('authenticatedUser', null);
-      //what about informing the server?
-      //authenticatedUser.save().then(function() {
-
-    //})
-      Ember.$.post("/api/logout", function() {
-        controller.store.unloadAll('post');
-        controller.store.unloadAll('user');
-        controller.transitionToRoute('auth.login');
-
-      });
     }
   }
-
 });

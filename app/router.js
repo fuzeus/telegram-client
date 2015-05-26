@@ -6,18 +6,20 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('auth', { path: '/'}, function() {
+  this.route('auth', { path: '/'}, function() {
     this.route('signup', {path: '/'});
     this.route('login');
     this.route('reset');
     this.route('check');
   });
+
   this.route('dashboard');
-  this.resource('user', { path: '/:user_id'}, function() {
+
+  this.route('user', { path: '/:user_id'}, function() {
     this.route('posts', {path: '/'});
     this.route('following');
     this.route('followers');
   });
 });
-export default Router.map(function() {
-});
+
+export default Router;
