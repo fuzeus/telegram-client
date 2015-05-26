@@ -11,6 +11,6 @@ export default Ember.Route.extend({
   },
   model: function() {
     this.get('session.authenticatedUser');
-  return this.store.find('post');
-}
+    return this.store.find('post');
+  }
 });
