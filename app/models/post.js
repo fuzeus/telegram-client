@@ -12,9 +12,6 @@ export default DS.Model.extend({
       body: 'This is literally the coolest post ever!',
       createdDate: new Date(),
       author: 'joeschmidt'
-
-
-
     },
     {
       id: 2,
@@ -27,9 +24,6 @@ export default DS.Model.extend({
       body: 'This is literally the coolest post ever!',
       createdDate: new Date(),
       author: 'krysrutledge'
-
-
     }
-
   ]
 });

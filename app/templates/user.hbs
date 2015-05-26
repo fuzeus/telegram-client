@@ -1,4 +1,5 @@
 {{nav-bar authenticatedUser=session.authenticatedUser loggingOut="logOut"}}
+
 <div class="profile">
   <div class="user-header">
     <img class="avatar" src="{{model.photo}}"/>
@@ -18,8 +19,6 @@
     {{#link-to "user.following" class="tab"}}Following{{/link-to}}
     {{#link-to "user.followers" class="tab"}}Followers{{/link-to}}
   </div>
-  {{outlet}}
-  <div class="users-list">
 
-  </div>
+  {{outlet}}
 </div>

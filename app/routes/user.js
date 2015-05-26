@@ -1,13 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  session: Ember.inject.service('session'),
-  currentUser: null,
-  model: function(params) {
-    var currentUser = this.store.find('user', params.user_id);
-    return currentUser;
-
+  actions: {
+    toggleFollow: function(user) {
+      user.toggleProperty('followedByAuthenticatedUser');
+      user.set('operation', user.get('followedByAuthenticatedUser') ? "follow" : "unfollow");
+      user.save();
+    }
   }
-
-
 });

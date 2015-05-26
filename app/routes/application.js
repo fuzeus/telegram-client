@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+<<<<<<< HEAD
   session: Ember.inject.service('session'),
 
   beforeModel: function() {
@@ -13,5 +14,17 @@ export default Ember.Route.extend({
       }
     return users;
     });
+=======
+  actions: {
+    logOut: function() {
+      var controller = this;
+      controller.get('session').set('authenticatedUser', null);
+      Ember.$.post("/api/logout", function() {
+        controller.store.unloadAll('post');
+        controller.store.unloadAll('user');
+        controller.transitionToRoute('auth.login');
+      });
+    }
+>>>>>>> f894d581e6600e54bf4eeb86640027ab305c7b98
   }
 });
