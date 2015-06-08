@@ -11,10 +11,7 @@ export default Ember.Route.extend({
   },
 
   model: function() {
-<<<<<<< HEAD
     this.get('session.authenticatedUser');
-=======
->>>>>>> f894d581e6600e54bf4eeb86640027ab305c7b98
     return this.store.find('post');
   }
 });

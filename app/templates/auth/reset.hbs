@@ -3,8 +3,11 @@
   <p>Reset password</p>
 </div>
 <div class="signin">
-  <form action = "processingscript.php" method = "post">
-    <p><input name = "email" class= "username" placeholder = "Enter your email..."></p>
+  <form {{action "resetPassword" on="submit"}} class="signin">
+    {{input type="text"
+            name="email"
+            class="username"
+            placeholder="Enter your email..."}}
   </form>
 </div>
 <div class="rest">
