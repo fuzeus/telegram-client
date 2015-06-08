@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+/* global md5 */
+
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   username: '',
@@ -22,7 +24,7 @@ export default Ember.Controller.extend({
 
       var user = this.store.createRecord('user', {
         id: username,
-        password: password,
+        password: md5( username + password),
         operation: 'login'
       });
 
