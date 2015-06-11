@@ -13,10 +13,11 @@ export default Ember.Controller.extend({
       var user = this.store.createRecord('user', {
         email: email,
         operation: 'resetPassword'
-      })
+      });
 
       user.save().then(function(user) {
         controller.set('email', null);
+        this.transitionToRoute('auth.check');
       }, function (response) {
         controller.set('error', response.responseText);
       });
