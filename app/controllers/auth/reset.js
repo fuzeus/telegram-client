@@ -14,11 +14,14 @@ export default Ember.Controller.extend({
         email: email,
         operation: 'resetPassword'
       });
+      console.log('created user record. About to save');
 
       user.save().then(function(user) {
+        console.log('inside callback of user.save');
         controller.set('email', null);
-        this.transitionToRoute('auth.check');
+        controller.transitionToRoute('auth.check');
       }, function (response) {
+        console.log('finished callback for user.save');
         controller.set('error', response.responseText);
       });
     }

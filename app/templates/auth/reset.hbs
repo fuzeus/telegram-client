@@ -3,17 +3,19 @@
   <p>Reset password</p>
 </div>
 <div class="signin">
-  <form {{action "resetPassword" on="submit"}} class="signin">
+  <form {{action "resetPassword" on="submit"}}>
     {{input type="text"
             name="email"
             class="username"
-            placeholder="Enter your email..."}}
-  </form>
-</div>
-<div class="rest">
-  <div class="log">
-    <form method="link" action="/check">
-    <input type="submit" value = "Reset password" name = "Reset password">
-  </form>
-  </div>
+            placeholder="Enter your email..."
+            value=email}}
+
+    <div class="rest">
+      <div class="log">
+        {{input type="submit"
+                value ="Reset password"
+                name = "Reset password"}}
+      </div>
+    </div>
+  </form> 
 </div>
